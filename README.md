@@ -15,13 +15,11 @@ Used tool
 
 `npx playwright install`
 
-`npm install`
-
 ## Run all available tests in headless mode.
 
 `npm run test-e2e:playwright`
 
-## Run all available tests in headed mode`
+## Run all available tests in headed mode
 
 `npm run test-e2e:playwright -- --headed`
 
