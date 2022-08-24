@@ -1,0 +1,37 @@
+# e2e test for WordPress site
+
+name: CI for e2e test
+
+# Controls when the workflow will run
+on:
+    # Triggers the workflow on push or pull request events but only for the main branch
+    push:
+        branches: [add/actions]
+    pull_request:
+        branches: [add/actions]
+
+    # Allows you to run this workflow manually from the Actions tab
+    workflow_dispatch:
+
+jobs:
+    e2e-test:
+        # The type of runner that the job will run on
+        name: Run wpe2e test Case
+        runs-on: ubuntu-latest
+
+        # Setup node
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v2
+            - name: Use Node.js
+              uses: actions/setup-node@v1
+              with:
+                  node-version: 17
+            - name: Install npm
+              run: npm install
+            - name: Install Playwright dependencies
+              run: npm run build
+            - name: Install browsers
+              run: npx playwright install
+            - name: Run tests
+              run: npm run test-e2e:playwright
