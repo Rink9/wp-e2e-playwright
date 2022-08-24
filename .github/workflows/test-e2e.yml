@@ -21,10 +21,13 @@ jobs:
 
         # Setup node
         steps:
-            - name: Setup node
-              uses: actions/setup-node@v2.5.1
+           - name: Checkout
+             uses: actions/checkout@v2
+
+            - name: Use Node.js
+              uses: actions/setup-node@v1
               with:
-                  node-version: '17'
+                node-version: 17
 
             - name: Install npm
               run: npm install
